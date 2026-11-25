@@ -5,8 +5,8 @@ from thousands of job sites in one place, using the Adzuna job search API.
 You can search by keyword and location, filter by country, date posted, job type and remote work,
 sort the results, and save jobs you like.
 
-- 🌐 **Live app (through the load balancer):** http://18.130.34.90
-- 🎥 **Demo video (max 2 min):** https://YOUR-VIDEO-LINK
+- 🌐 **Live app (through the load balancer):** http://localhost:3000/
+- 🎥 **Demo video (max 2 min):** https://youtu.be/EEAakS34fEM
 - 👩🏾‍💻 **Author:** Balinda Sonia — [@Balinda55](https://github.com/Balinda55)
 
 ---
