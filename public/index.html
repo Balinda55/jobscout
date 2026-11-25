@@ -12,7 +12,7 @@
     main {max-width: 960px; margin: 0 auto; padding: 1rem; }
     .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1rem; margin-bottom: 1rem; }
     .row { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem; }
-    label { display: flex; flex-direction: column; font-size . 9rem; color: var(--muted); flex: 1 1 180px; };
+    label { display: flex; flex-direction: column; font-size: .9rem; color: var(--muted); flex: 1 1 180px; }
     label.check { flex-direction: row; align-items: center; gap: .4rem; flex: 0 0 auto; align-self: flex-end; padding-bottom: .5rem; }
     input[type="text"], select { margin-top: .3rem; padding: .6rem .7rem; border: 1px solid var(--border); border-radius: 8px; font-size: 1rem; }
     button { background: var(--brand); color: #fff; border: none; border-radius: 8px; padding:.7rem 1.4rem; font-size: 1rem; cursor: pointer; }
@@ -21,8 +21,8 @@
     .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: .8rem; margin-bottom: 1rem; }
     .stat { background: var(--bg); border-radius: 10px; padding: .7rem; text-align: center; font-size: .8rem; color: var(--muted); }
     .stat strong { display: block; font-size: 1.5rem; color: var(--brand); }
-    .bar-row { display: grid: grid-template-columns: 90px 1fr 30px; align-items:center; gap: .5rem; font-size: .85rem; margin-top: .4rem; }
-    .bar-track { background: var(--bg); border-radius: 999px; height: 12px; overflow: hidden; } .bar-fill { background: var(--brand) height: 100%; }
+    .bar-row { display: grid; grid-template-columns: 90px 1fr 30px; align-items: center; gap: .5rem; font-size: .85rem; margin-top: .4rem; }
+    .bar-track { background: var(--bg); border-radius: 999px; height: 12px; overflow: hidden; } .bar-fill { background: var(--brand); height: 100%; }
     .job { display: grid; grid-template-columns: 56px 1fr; gap: 1rem; }
     .logo {width: 56px; height: 56px; border-radius: 8px; object-fit: contain; background: var(--bg); display: flex; align-items: center; justify-content: center; font-weight: 700; color: var(--brand) }
     .job h3 { margin: 0; font-size: 1.1rem; } .company { color: var(--muted); margin: .1rem 0 .5rem; }
@@ -39,13 +39,13 @@
     </head>
     <body>
         <header>
-            <h1> Job<span>Scout</span></h1><p>Search live job Listings form LinkedIn, Indeed, Glassdoor and more, in one place.</p>
+            <h1> Job<span>Scout</span></h1><p>Search live job Listings from LinkedIn, Indeed, Glassdoor and more, in one place.</p>
         </header>
         <main>
             <form id="search-form" class="card" novalidate>
                 <div class="row">
                     <label>Job title or keyword <input id="query" type="text" placeholder="e.g. software engineer" maxlength="100"/></label>
-                    <label>Location (optional) <input id="location" type="text" placeholder=". Kigali" maxlength="60" </label>
+                    <label>Location (optional) <input id="location" type="text" placeholder="e.g. Kigali" maxlength="60" /></label>
                 </div>
                 <div class="row">
                     <label>Country <select id="country"></select></label>
@@ -56,27 +56,26 @@
                 <button type="submit" id="search-btn">Search jobs</button>
             </form>
             <section id="toolbar" class="card row hidden">
-                <label>Filter results <input id="filter type="text" placeholder="Filter by company, title or city" /></label>
+                <label>Filter results <input id="filter" type="text" placeholder="Filter by company, title or city" /></label>
                 <label>Sort by <select id="sort"></select></label>
                 <label class="check"><input id="saved-only" type="checkbox" />Saved jobs only</label></section>
                 <section id="summary" class="card hidden">
-                    <strong>Results overview</strong><div id="stats" class="stats"></div><div id="bars"</div>
+                    <strong>Results overview</strong><div id="stats" class="stats"></div><div id="bars"></div>
                 </section>
-                <p id="status" class="status" role="status" arian-live="polite"></p><section id="results"></section>
+                <p id="status" class="status" role="status" aria-live="polite"></p><section id="results"></section>
                 <div id="pager" class="pager hidden">
-                    <button id="prev" type="button">← Previous</button> <span id="Page 1"</span> <button id="next" type"button">Next→</button>
+                    <button id="prev" type="button">← Previous</button> <span id="page-label">Page1</span> <button id="next" type="button">Next→</button>
                 </div>
         </main>
         <footer>
-            <p>Job data <a href="https://rapidapi.com/letscrape-6bRBa3QguO5/api/jsearch"</p> target="_blank" rel="noopener">JSearch API (OpenWeb Ninja) on RapidAPI</a>.</p>
-            <p>Served by: <strong id="served-by">...</strong></p>
+            <p>Job data from <a href="https://rapidapi.com/letscrape-6bRBa3QguO5/api/jsearch" target="_blank" rel="noopener">JSearch API (OpenWeb Ninja) on RapidAPI</a>.</p>
         </footer>
         <script>
             const $ = (id) => document.getElementById(id);
             const TYPES = { FULLTIME: 'Full-time', PARTTIME: 'Part-time', CONTRACTOR: 'Contract', INTERN: 'Internship' };
             const OPTIONS= {
-                country: {'': 'Any', rw: 'Rwanda', ke: 'Kenya', ng: 'Nigeria',za: 'South Africa', us: 'United States', gb: 'United Kingdom', ca: 'Canada', de: 'Germany', fr: 'France', in: 'India', au: 'Autralia' };
-                date_posted: { all: 'Any time', today: 'Today', '3 days': 'Last 3 days', week: 'Last week', month: 'Last month' };
+                country: {'': 'Any', rw: 'Rwanda', ke: 'Kenya', ng: 'Nigeria',za: 'South Africa', us: 'United States', gb: 'United Kingdom', ca: 'Canada', de: 'Germany', fr: 'France', in: 'India', au: 'Australia' },
+                date_posted: { all: 'Any time', today: 'Today', '3days': 'Last 3 days', week: 'Last week', month: 'Last month' },
                 type: { '': 'Any', ...TYPES },
                 sort: {newest: 'Newest first', oldest: 'Oldest first', salary: 'Highest salary', company: 'Company A-Z', title: 'Job title A-Z' },
             };
@@ -194,7 +193,7 @@
     $('prev').addEventListener('click', () => { search(state.page - 1); scrollTo(0, 0); });
     $('next').addEventListener('click', () => { search(state.page + 1); scrollTo(0, 0); });
     fetch('/api/health').then((r) => r.json()).then((d) => { $('served-by').textContent = d.server; })
-      .catch(() => { $('served-by').textContent = 'unreachable'; };
+      .catch(() => { $('served-by').textContent = 'unreachable'; });
       </script>
     </body>
 </html>
