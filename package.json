@@ -1,0 +1,19 @@
+{
+    "name": "jobscout",
+    "version": "1.0.0",
+    "description": "JobScout - search, filter and sort real job listings using the JSearch API",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server.js"
+    },
+    "engines": {
+        "node": ">=18"
+    },
+    "author": "Balinda Sonia",
+    "license": "MIT",
+    "dependencies": {
+        "dotenv": "^16.4.5",
+    "express": "^4.21.2"
+    }
+}
+
