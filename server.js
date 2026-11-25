@@ -20,7 +20,7 @@ const ALLOWED ={
     country: ['', 'us', 'gb','ca' ,'in' ,'de', 'fr', 'za', 'ng', 'ke', 'rw','au'],
 };
 
-const CACHE_TTL_MS = 10 * 60 *1000;
+const CACHE_TTL_MS = 24 * 60 * 60 *1000;
 const cache = new Map();
 
 function getCached(key) {
